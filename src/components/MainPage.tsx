@@ -35,7 +35,7 @@ const MainPage = ({ page, sideBar }: MainPageProps) => {
           />
         );
       default:
-        return <p>mainPage</p>;
+        return <p>mainPage test</p>;
     }
   };
 
