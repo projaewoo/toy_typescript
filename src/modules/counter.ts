@@ -1,6 +1,14 @@
+type CounterAction =
+  | {
+      type: "counter/INCREASE";
+    }
+  | {
+      type: "counter/DECREASE";
+    };
+
 // 액션 타입
-const INCREASE = "counter/INCREASE";
-const DECREASE = "counter/DECREASE";
+const INCREASE = "counter/INCREASE" as const;
+const DECREASE = "counter/DECREASE" as const;
 
 // 액션 생성 함수
 export const increase = () => ({ type: INCREASE });
@@ -12,7 +20,7 @@ const initialState = {
 };
 
 // 리듀서 함수
-function counter(state = initialState, action: any) {
+function counter(state = initialState, action: CounterAction) {
   switch (action.type) {
     case INCREASE:
       return {

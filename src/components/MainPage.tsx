@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import { MENU } from "../utils/MENU";
-import Counter from "./Counter/index";
-import Todo from "./Todo/index";
+import CounterContainer from "src/containers/CounterContainer";
+import TodosContainer from "src/containers/TodosContainer";
 
 interface MainPageProps {
   page: any;
@@ -11,29 +11,12 @@ interface MainPageProps {
 }
 
 const MainPage = ({ page, sideBar }: MainPageProps) => {
-  const [number, setNumber] = useState(1);
-
   const returnPage = () => {
     switch (page) {
       case MENU[0]:
-        return (
-          <Counter
-            number={number}
-            onIncrease={() => setNumber(number + 1)}
-            onDecrease={() => setNumber(number - 1)}
-          />
-        );
+        return <CounterContainer />;
       case MENU[1]:
-        return (
-          <Todo
-            input={1}
-            todos={{ test: 1 }}
-            onChangeInput={1}
-            onInsert={1}
-            onToggle={1}
-            onRemove={1}
-          />
-        );
+        return <TodosContainer />;
       default:
         return <p>mainPage</p>;
     }
