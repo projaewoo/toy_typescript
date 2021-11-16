@@ -14,8 +14,8 @@ type TodosContainerType = {
   }[];
   changeInput: (input: string) => void;
   insert: (text: string) => void;
-  toggle: any;
-  remove: any;
+  toggle: (id: number) => void;
+  remove: (id: number) => void;
 };
 
 const TodosContainer = ({

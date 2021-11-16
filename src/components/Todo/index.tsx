@@ -19,8 +19,8 @@ interface TodosProps {
   }[];
   onChangeInput: (param: string) => void;
   onInsert: (input: string) => void;
-  onToggle: () => void;
-  onRemove: () => void;
+  onToggle: (id: number) => void;
+  onRemove: (id: number) => void;
 }
 
 const TodoItem = ({ todo, onToggle, onRemove }: TodoItemProps) => {

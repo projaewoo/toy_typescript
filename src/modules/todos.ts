@@ -1,7 +1,7 @@
 type TodosAction =
   | {
       type: "todos/CHANGE_INPUT";
-      input: any;
+      input: string;
     }
   | {
       type: "todos/INSERT";
@@ -43,12 +43,12 @@ export const insert = (text: string) => ({
   },
 });
 
-export const toggle = (id: string) => ({
+export const toggle = (id: number) => ({
   type: TOGGLE,
   id,
 });
 
-export const remove = (id: string) => ({
+export const remove = (id: number) => ({
   type: REMOVE,
   id,
 });
