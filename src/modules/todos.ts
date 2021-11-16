@@ -1,3 +1,25 @@
+type TodosAction =
+  | {
+      type: "todos/CHANGE_INPUT";
+      input: any;
+    }
+  | {
+      type: "todos/INSERT";
+      todo: {
+        id: number;
+        text: string;
+        done: boolean;
+      };
+    }
+  | {
+      type: "todos/TOGGLE";
+      id: number;
+    }
+  | {
+      type: "todos/REMOVE";
+      id: number;
+    };
+
 // 액션 타입
 const CHANGE_INPUT = "todos/CHANGE_INPUT";
 const INSERT = "todos/INSERT";
@@ -5,7 +27,7 @@ const TOGGLE = "todos/TOGGLE";
 const REMOVE = "todos/REMOVE";
 
 // 액션 생성 함수
-export const changeInput = (input: any) => ({
+export const changeInput = (input: string) => ({
   type: CHANGE_INPUT,
   input,
 });
@@ -49,7 +71,7 @@ const initialState = {
 };
 
 // 리듀서 함수
-function todos(state = initialState, action: any) {
+function todos(state = initialState, action: TodosAction) {
   switch (action.type) {
     case CHANGE_INPUT:
       return {

@@ -1,26 +1,41 @@
 import React from "react";
 
 interface TodoItemProps {
-  todo: any;
-  onToggle: any;
-  onRemove: any;
+  todo: {
+    id: number;
+    text: string;
+    done: boolean;
+  };
+  onToggle: (id: number) => void;
+  onRemove: (id: number) => void;
 }
 
 interface TodosProps {
-  input: any;
-  todos: object;
-  onChangeInput: any;
-  onInsert: any;
-  onToggle: any;
-  onRemove: any;
+  input: string;
+  todos: {
+    id: number;
+    text: string;
+    done: boolean;
+  }[];
+  onChangeInput: (param: string) => void;
+  onInsert: (input: string) => void;
+  onToggle: () => void;
+  onRemove: () => void;
 }
 
 const TodoItem = ({ todo, onToggle, onRemove }: TodoItemProps) => {
   return (
     <div>
-      <input type="checkbox" />
-      <span>예제 텍스트</span>
-      <button>삭제</button>
+      <input
+        type="checkbox"
+        onClick={() => onToggle(todo.id)}
+        checked={todo.done}
+        readOnly
+      />
+      <span style={{ textDecoration: todo.done ? "line-through" : "none" }}>
+        {todo.text}
+      </span>
+      <button onClick={() => onRemove(todo.id)}>삭제</button>
     </div>
   );
 };
@@ -35,20 +50,27 @@ const Todos = ({
 }: TodosProps) => {
   const onSubmit = (e: any) => {
     e.preventDefault();
+    onInsert(input);
+    onChangeInput("");
   };
+
+  const onChange = (e: any) => onChangeInput(e.target.value);
 
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input />
+        <input value={input} onChange={onChange} />
         <button type="submit">등록</button>
       </form>
       <div>
-        <TodoItem todo={1} onToggle={1} onRemove={1} />
-        <TodoItem todo={1} onToggle={1} onRemove={1} />
-        <TodoItem todo={1} onToggle={1} onRemove={1} />
-        <TodoItem todo={1} onToggle={1} onRemove={1} />
-        <TodoItem todo={1} onToggle={1} onRemove={1} />
+        {todos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={onToggle}
+            onRemove={onRemove}
+          />
+        ))}
       </div>
     </div>
   );
