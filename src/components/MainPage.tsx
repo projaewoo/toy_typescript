@@ -1,9 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-
-import { MENU } from "../utils/MENU";
-import CounterContainer from "src/containers/CounterContainer";
-import TodosContainer from "src/containers/TodosContainer";
 
 interface MainPageProps {
   page: any;
@@ -11,18 +7,7 @@ interface MainPageProps {
 }
 
 const MainPage = ({ page, sideBar }: MainPageProps) => {
-  const returnPage = () => {
-    switch (page) {
-      case MENU[0]:
-        return <CounterContainer />;
-      case MENU[1]:
-        return <TodosContainer />;
-      default:
-        return <p>mainPage</p>;
-    }
-  };
-
-  return <MainPageWrapper sideBar={sideBar}>{returnPage()}</MainPageWrapper>;
+  return <MainPageWrapper sideBar={sideBar}>{page.component}</MainPageWrapper>;
 };
 
 type MainPageWrapperProps = {

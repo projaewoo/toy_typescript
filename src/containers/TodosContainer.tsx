@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import todos, { changeInput, insert, toggle, remove } from "src/modules/todos";
+import { changeInput, insert, toggle, remove } from "src/modules/todos";
 import Todos from "src/components/Todo";
 import { RootState } from "src/modules";
 

@@ -33,6 +33,7 @@ export const changeInput = (input: string) => ({
   type: CHANGE_INPUT,
   input,
 });
+// type: CHANGE_INPUT일 때, action.type과 action.input를 추후에 사용할 수 있음.
 
 export const insert = (text: string) => ({
   type: INSERT,
@@ -42,6 +43,7 @@ export const insert = (text: string) => ({
     done: false,
   },
 });
+// type: INSERT일 때, action.type과 action.todo를 추후에 사용할 수 있음.
 
 export const toggle = (id: number) => ({
   type: TOGGLE,

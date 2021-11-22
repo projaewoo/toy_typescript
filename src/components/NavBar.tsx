@@ -18,10 +18,15 @@ const NavBar = ({ setPage, sideBar, setSideBar }: NavBarProps) => {
         ? MENU.map((menu, index) => (
             <p
               key={index}
-              onClick={() => setPage(menu)}
+              onClick={() =>
+                setPage({
+                  name: menu.name,
+                  component: menu.component,
+                })
+              }
               style={{ cursor: "pointer" }}
             >
-              {menu}
+              {menu.name}
             </p>
           ))
         : null}
