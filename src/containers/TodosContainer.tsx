@@ -5,6 +5,7 @@ import todos, { changeInput, insert, toggle, remove } from "src/modules/todos";
 import Todos from "src/components/Todo";
 import { RootState } from "src/modules";
 
+//   src/modules/todos의 initialState와 액션 생성 함수의 type를 모조리 정의
 type TodosContainerType = {
   input: string;
   todos: {
@@ -38,16 +39,15 @@ const TodosContainer = ({
   );
 };
 
-// version 1.1
 export default connect(
   ({ todos }: RootState) => ({
     input: todos.input,
     todos: todos.todos,
   }),
   {
-    changeInput, //dispatch(changeInput)
-    insert, //dispatch(insert)
-    toggle, //dispatch(toggle)
-    remove, //dispatch(remove)
+    changeInput,
+    insert,
+    toggle,
+    remove,
   }
 )(TodosContainer);

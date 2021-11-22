@@ -1,6 +1,6 @@
-import React from "react";
+import React, { ChangeEvent, FormEvent } from "react";
 
-interface TodoItemProps {
+type TodoItemType = {
   todo: {
     id: number;
     text: string;
@@ -8,22 +8,9 @@ interface TodoItemProps {
   };
   onToggle: (id: number) => void;
   onRemove: (id: number) => void;
-}
+};
 
-interface TodosProps {
-  input: string;
-  todos: {
-    id: number;
-    text: string;
-    done: boolean;
-  }[];
-  onChangeInput: (param: string) => void;
-  onInsert: (input: string) => void;
-  onToggle: (id: number) => void;
-  onRemove: (id: number) => void;
-}
-
-const TodoItem = ({ todo, onToggle, onRemove }: TodoItemProps) => {
+const TodoItem = ({ todo, onToggle, onRemove }: TodoItemType) => {
   return (
     <div>
       <input
@@ -40,6 +27,19 @@ const TodoItem = ({ todo, onToggle, onRemove }: TodoItemProps) => {
   );
 };
 
+type TodosType = {
+  input: string;
+  todos: {
+    id: number;
+    text: string;
+    done: boolean;
+  }[];
+  onChangeInput: (input: string) => void;
+  onInsert: (text: string) => void;
+  onToggle: (id: number) => void;
+  onRemove: (id: number) => void;
+};
+
 const Todos = ({
   input,
   todos,
@@ -47,14 +47,16 @@ const Todos = ({
   onInsert,
   onToggle,
   onRemove,
-}: TodosProps) => {
-  const onSubmit = (e: any) => {
+}: TodosType) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     onInsert(input);
     onChangeInput("");
   };
 
-  const onChange = (e: any) => onChangeInput(e.target.value);
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onChangeInput(e.target.value);
+  };
 
   return (
     <div>
