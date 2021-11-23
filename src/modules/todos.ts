@@ -75,6 +75,7 @@ const initialState = {
 // 리듀서 함수
 function todos(state = initialState, action: TodosAction) {
   switch (action.type) {
+    // CHANGE_INPUT이라는 type을 가진 dispatch가 실행되면, state를 변경
     case CHANGE_INPUT:
       return {
         ...state,
