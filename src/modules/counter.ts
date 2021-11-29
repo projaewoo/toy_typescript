@@ -6,7 +6,7 @@ type CounterAction =
       type: "counter/DECREASE";
     };
 
-// 액션 타입
+// 액션
 const INCREASE = "counter/INCREASE" as const;
 const DECREASE = "counter/DECREASE" as const;
 

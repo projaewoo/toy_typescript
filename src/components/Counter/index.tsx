@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 interface CounterProps {
-  number: number,
-  onIncrease: any,
-  onDecrease: any,
-};
+  number: number;
+  onIncrease: () => void;
+  onDecrease: () => void;
+}
 
 const Counter = ({ number, onIncrease, onDecrease }: CounterProps) => {
   return (
