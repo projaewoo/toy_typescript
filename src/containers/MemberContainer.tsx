@@ -1,10 +1,10 @@
 import React from "react";
-import { register, remove } from "src/modules/member";
+import { register, remove } from "modules/member";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { RootState } from "src/modules";
+import { RootState } from "modules";
 
-import Member from "src/components/Member";
+import Member from "components/Member";
 
 type ContainerType = {
   members: {

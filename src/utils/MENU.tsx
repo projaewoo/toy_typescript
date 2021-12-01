@@ -1,6 +1,7 @@
-import CounterContainer from "src/containers/CounterContainer";
-import TodosContainer from "src/containers/TodosContainer";
-import MemberContainer from "src/containers/MemberContainer";
+import CounterContainer from "containers/CounterContainer";
+import TodosContainer from "containers/TodosContainer";
+import MemberContainer from "containers/MemberContainer";
+import Users from "components/Users";
 
 export const MENU = [
   {
@@ -14,5 +15,9 @@ export const MENU = [
   {
     name: "Member",
     component: <MemberContainer />,
+  },
+  {
+    name: "Saga_GerUsers",
+    component: <Users />,
   },
 ];

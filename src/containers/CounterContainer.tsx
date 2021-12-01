@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { increaseAsync, decreaseAsync } from "src/modules/counter";
-import Counter from "src/components/Counter";
-import { RootState } from "src/modules";
+import { increaseAsync, decreaseAsync } from "modules/counter";
+import Counter from "components/Counter";
+import { RootState } from "modules";
 
 type ContainerType = {
   number: number;
