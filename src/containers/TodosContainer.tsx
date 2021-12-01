@@ -1,9 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import todos, { changeInput, insert, toggle, remove } from "src/modules/todos";
-import Todos from "src/components/Todo";
-import { RootState } from "src/modules";
+import { changeInput, insert, toggle, remove } from "modules/todos";
+import Todos from "components/Todo";
+import { RootState } from "modules";
 
 //   src/modules/todos의 initialState와 액션 생성 함수의 type를 모조리 정의
 type TodosContainerType = {

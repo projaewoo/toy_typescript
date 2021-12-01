@@ -11,7 +11,18 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import rootReducer from "./modules";
 
-const store = createStore(rootReducer, composeWithDevTools());
+//redux-saga 미들웨어 적용
+import { applyMiddleware } from "redux";
+import createSagaMiddleware from "redux-saga";
+import { rootSaga } from "./modules";
+
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
+
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>

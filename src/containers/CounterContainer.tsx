@@ -1,40 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import Counter from "src/components/Counter";
-import { RootState } from "src/modules";
+import { increaseAsync, decreaseAsync } from "modules/counter";
+import Counter from "components/Counter";
+import { RootState } from "modules";
 
-import { increase, decrease } from "src/modules/counter";
-
-type CounterContainerType = {
+type ContainerType = {
   number: number;
-  increase: () => void;
-  decrease: () => void;
+  increaseAsync: () => void;
+  decreaseAsync: () => void;
 };
 
 const CounterContainer = ({
   number,
-  increase,
-  decrease,
-}: CounterContainerType) => {
+  increaseAsync,
+  decreaseAsync,
+}: ContainerType) => {
   return (
-    <Counter number={number} onIncrease={increase} onDecrease={decrease} />
+    <Counter
+      number={number}
+      onIncrease={increaseAsync}
+      onDecrease={decreaseAsync}
+    />
   );
 };
 
-// 리덕스 스토어 안의 상태를 컴포넌트의 props로 넘겨주기 위해 설정하는 함수
-const mapStateToProps = (state: RootState) => ({
-  number: state.counter.number,
-});
-
-// 액션 생성 함수를 컴포넌트의 props로 넘겨주기 위해 사용하는 함수
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  increase: () => {
-    dispatch(increase());
-  },
-  decrease: () => {
-    dispatch(decrease());
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CounterContainer);
+export default connect(
+  (state: RootState) => ({
+    number: state.counter,
+  }),
+  {
+    increaseAsync,
+    decreaseAsync,
+  }
+)(CounterContainer);
